@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePMakelabelsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pMakelabelsController.selected.id}" title="#{bundle.CreatePMakelabelsTitle_id}" required="true" requiredMessage="#{bundle.CreatePMakelabelsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_po}" for="po" />
+                    <h:inputText id="po" value="#{pMakelabelsController.selected.po}" title="#{bundle.CreatePMakelabelsTitle_po}" required="true" requiredMessage="#{bundle.CreatePMakelabelsRequiredMessage_po}"/>
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_style}" for="style" />
+                    <h:inputText id="style" value="#{pMakelabelsController.selected.style}" title="#{bundle.CreatePMakelabelsTitle_style}" required="true" requiredMessage="#{bundle.CreatePMakelabelsRequiredMessage_style}"/>
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_NBox}" for="NBox" />
+                    <h:inputText id="NBox" value="#{pMakelabelsController.selected.NBox}" title="#{bundle.CreatePMakelabelsTitle_NBox}" required="true" requiredMessage="#{bundle.CreatePMakelabelsRequiredMessage_NBox}"/>
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_dzBox}" for="dzBox" />
+                    <h:inputText id="dzBox" value="#{pMakelabelsController.selected.dzBox}" title="#{bundle.CreatePMakelabelsTitle_dzBox}" />
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_unitsBox}" for="unitsBox" />
+                    <h:inputText id="unitsBox" value="#{pMakelabelsController.selected.unitsBox}" title="#{bundle.CreatePMakelabelsTitle_unitsBox}" />
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_osgroup}" for="osgroup" />
+                    <h:inputText id="osgroup" value="#{pMakelabelsController.selected.osgroup}" title="#{bundle.CreatePMakelabelsTitle_osgroup}" required="true" requiredMessage="#{bundle.CreatePMakelabelsRequiredMessage_osgroup}"/>
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_shipto}" for="shipto" />
+                    <h:inputText id="shipto" value="#{pMakelabelsController.selected.shipto}" title="#{bundle.CreatePMakelabelsTitle_shipto}" />
+                    <h:outputLabel value="#{bundle.CreatePMakelabelsLabel_corp}" for="corp" />
+                    <h:selectOneMenu id="corp" value="#{pMakelabelsController.selected.corp}" title="#{bundle.CreatePMakelabelsTitle_corp}" >
+                        <f:selectItems value="#{corpController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pMakelabelsController.create}" value="#{bundle.CreatePMakelabelsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pMakelabelsController.prepareList}" value="#{bundle.CreatePMakelabelsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePMakelabelsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

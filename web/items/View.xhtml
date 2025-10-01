@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle4.ViewItemsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle4.ViewItemsLabel_id}"/>
+                    <h:outputText value="#{itemsController.selected.id}" title="#{bundle4.ViewItemsTitle_id}"/>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_code}"/>
+                    <h:outputText value="#{itemsController.selected.code}" title="#{bundle4.ViewItemsTitle_code}"/>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_description}"/>
+                    <h:outputText value="#{itemsController.selected.description}" title="#{bundle4.ViewItemsTitle_description}"/>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_sdate}"/>
+                    <h:outputText value="#{itemsController.selected.sdate}" title="#{bundle4.ViewItemsTitle_sdate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_status}"/>
+                    <h:outputText value="#{itemsController.selected.status}" title="#{bundle4.ViewItemsTitle_status}"/>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_price}"/>
+                    <h:outputText value="#{itemsController.selected.price}" title="#{bundle4.ViewItemsTitle_price}"/>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_type}"/>
+                    <h:outputText value="#{itemsController.selected.type}" title="#{bundle4.ViewItemsTitle_type}"/>
+                    <h:outputText value="#{bundle4.ViewItemsLabel_itemfk}"/>
+                    <h:outputText value="#{itemsController.selected.itemfk}" title="#{bundle4.ViewItemsTitle_itemfk}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemsController.destroyAndView}" value="#{bundle4.ViewItemsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle4.ViewItemsEditLink}"/>
+                <br />
+                <h:commandLink action="#{itemsController.prepareCreate}" value="#{bundle4.ViewItemsCreateLink}" />
+                <br />
+                <h:commandLink action="#{itemsController.prepareList}" value="#{bundle4.ViewItemsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle4.ViewItemsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

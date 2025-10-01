@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PBolDetViewDlg" widgetVar="PBolDetViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPBolDetTitle}">
+            <h:form id="PBolDetViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pBolDetController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_id}"/>
+                        <h:outputText value="#{pBolDetController.selected.id}" title="#{bundle.ViewPBolDetTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_po}"/>
+                        <h:outputText value="#{pBolDetController.selected.po}" title="#{bundle.ViewPBolDetTitle_po}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_invoice}"/>
+                        <h:outputText value="#{pBolDetController.selected.invoice}" title="#{bundle.ViewPBolDetTitle_invoice}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_ctns}"/>
+                        <h:outputText value="#{pBolDetController.selected.ctns}" title="#{bundle.ViewPBolDetTitle_ctns}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_weight}"/>
+                        <h:outputText value="#{pBolDetController.selected.weight}" title="#{bundle.ViewPBolDetTitle_weight}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_palletSlip1}"/>
+                        <h:outputText value="#{pBolDetController.selected.palletSlip1}" title="#{bundle.ViewPBolDetTitle_palletSlip1}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_palletSlip2}"/>
+                        <h:outputText value="#{pBolDetController.selected.palletSlip2}" title="#{bundle.ViewPBolDetTitle_palletSlip2}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_addShipinfo}"/>
+                        <h:outputText value="#{pBolDetController.selected.addShipinfo}" title="#{bundle.ViewPBolDetTitle_addShipinfo}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_status}"/>
+                        <h:outputText value="#{pBolDetController.selected.status}" title="#{bundle.ViewPBolDetTitle_status}"/>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_sdate}"/>
+                        <h:outputText value="#{pBolDetController.selected.sdate}" title="#{bundle.ViewPBolDetTitle_sdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPBolDetLabel_bolFk}"/>
+                        <h:outputText value="#{pBolDetController.selected.bolFk}" title="#{bundle.ViewPBolDetTitle_bolFk}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PBolDetViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

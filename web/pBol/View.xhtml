@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PBolViewDlg" widgetVar="PBolViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPBolTitle}">
+            <h:form id="PBolViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pBolController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPBolLabel_id}"/>
+                        <h:outputText value="#{pBolController.selected.id}" title="#{bundle.ViewPBolTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_sdate}"/>
+                        <h:outputText value="#{pBolController.selected.sdate}" title="#{bundle.ViewPBolTitle_sdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPBolLabel_seq}"/>
+                        <h:outputText value="#{pBolController.selected.seq}" title="#{bundle.ViewPBolTitle_seq}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_CCommodity}"/>
+                        <h:outputText value="#{pBolController.selected.CCommodity}" title="#{bundle.ViewPBolTitle_CCommodity}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_skids}"/>
+                        <h:outputText value="#{pBolController.selected.skids}" title="#{bundle.ViewPBolTitle_skids}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_weight}"/>
+                        <h:outputText value="#{pBolController.selected.weight}" title="#{bundle.ViewPBolTitle_weight}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_nfc}"/>
+                        <h:outputText value="#{pBolController.selected.nfc}" title="#{bundle.ViewPBolTitle_nfc}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_class1}"/>
+                        <h:outputText value="#{pBolController.selected.class1}" title="#{bundle.ViewPBolTitle_class1}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_FChargeTerms}"/>
+                        <h:outputText value="#{pBolController.selected.FChargeTerms}" title="#{bundle.ViewPBolTitle_FChargeTerms}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_confirmation}"/>
+                        <h:outputText value="#{pBolController.selected.confirmation}" title="#{bundle.ViewPBolTitle_confirmation}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_DValue}"/>
+                        <h:outputText value="#{pBolController.selected.DValue}" title="#{bundle.ViewPBolTitle_DValue}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_codAmount}"/>
+                        <h:outputText value="#{pBolController.selected.codAmount}" title="#{bundle.ViewPBolTitle_codAmount}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_CClass}"/>
+                        <h:outputText value="#{pBolController.selected.CClass}" title="#{bundle.ViewPBolTitle_CClass}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_CNmfc}"/>
+                        <h:outputText value="#{pBolController.selected.CNmfc}" title="#{bundle.ViewPBolTitle_CNmfc}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_CHm}"/>
+                        <h:outputText value="#{pBolController.selected.CHm}" title="#{bundle.ViewPBolTitle_CHm}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_feeTerms}"/>
+                        <h:outputText value="#{pBolController.selected.feeTerms}" title="#{bundle.ViewPBolTitle_feeTerms}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_trailerLoaded}"/>
+                        <h:outputText value="#{pBolController.selected.trailerLoaded}" title="#{bundle.ViewPBolTitle_trailerLoaded}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_freightCounted}"/>
+                        <h:outputText value="#{pBolController.selected.freightCounted}" title="#{bundle.ViewPBolTitle_freightCounted}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_fob}"/>
+                        <h:outputText value="#{pBolController.selected.fob}" title="#{bundle.ViewPBolTitle_fob}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_sid}"/>
+                        <h:outputText value="#{pBolController.selected.sid}" title="#{bundle.ViewPBolTitle_sid}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_trailerNo}"/>
+                        <h:outputText value="#{pBolController.selected.trailerNo}" title="#{bundle.ViewPBolTitle_trailerNo}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_sealNo}"/>
+                        <h:outputText value="#{pBolController.selected.sealNo}" title="#{bundle.ViewPBolTitle_sealNo}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_scac}"/>
+                        <h:outputText value="#{pBolController.selected.scac}" title="#{bundle.ViewPBolTitle_scac}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_proNo}"/>
+                        <h:outputText value="#{pBolController.selected.proNo}" title="#{bundle.ViewPBolTitle_proNo}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_instructions}"/>
+                        <h:outputText value="#{pBolController.selected.instructions}" title="#{bundle.ViewPBolTitle_instructions}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_mbolAtt}"/>
+                        <h:outputText value="#{pBolController.selected.mbolAtt}" title="#{bundle.ViewPBolTitle_mbolAtt}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_codTerms}"/>
+                        <h:outputText value="#{pBolController.selected.codTerms}" title="#{bundle.ViewPBolTitle_codTerms}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_customerFk}"/>
+                        <h:outputText value="#{pBolController.selected.customerFk}" title="#{bundle.ViewPBolTitle_customerFk}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_corpFk}"/>
+                        <h:outputText value="#{pBolController.selected.corpFk}" title="#{bundle.ViewPBolTitle_corpFk}"/>
+                        <h:outputText value="#{bundle.ViewPBolLabel_carrierFk}"/>
+                        <h:outputText value="#{pBolController.selected.carrierFk}" title="#{bundle.ViewPBolTitle_carrierFk}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PBolViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

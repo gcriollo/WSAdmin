@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPMakelabelsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_id}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.id}" title="#{bundle.ViewPMakelabelsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_po}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.po}" title="#{bundle.ViewPMakelabelsTitle_po}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_style}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.style}" title="#{bundle.ViewPMakelabelsTitle_style}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_NBox}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.NBox}" title="#{bundle.ViewPMakelabelsTitle_NBox}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_dzBox}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.dzBox}" title="#{bundle.ViewPMakelabelsTitle_dzBox}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_unitsBox}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.unitsBox}" title="#{bundle.ViewPMakelabelsTitle_unitsBox}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_osgroup}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.osgroup}" title="#{bundle.ViewPMakelabelsTitle_osgroup}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_shipto}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.shipto}" title="#{bundle.ViewPMakelabelsTitle_shipto}"/>
+                    <h:outputText value="#{bundle.ViewPMakelabelsLabel_corp}"/>
+                    <h:outputText value="#{pMakelabelsController.selected.corp}" title="#{bundle.ViewPMakelabelsTitle_corp}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pMakelabelsController.destroyAndView}" value="#{bundle.ViewPMakelabelsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPMakelabelsEditLink}"/>
+                <br />
+                <h:commandLink action="#{pMakelabelsController.prepareCreate}" value="#{bundle.ViewPMakelabelsCreateLink}" />
+                <br />
+                <h:commandLink action="#{pMakelabelsController.prepareList}" value="#{bundle.ViewPMakelabelsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPMakelabelsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

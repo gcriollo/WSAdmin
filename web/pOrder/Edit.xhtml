@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.EditPOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pOrderController.selected.id}" title="#{bundle2.EditPOrderTitle_id}" required="true" requiredMessage="#{bundle2.EditPOrderRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_po}" for="po" />
+                    <h:inputText id="po" value="#{pOrderController.selected.po}" title="#{bundle2.EditPOrderTitle_po}" required="true" requiredMessage="#{bundle2.EditPOrderRequiredMessage_po}"/>
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_sdate}" for="sdate" />
+                    <h:inputText id="sdate" value="#{pOrderController.selected.sdate}" title="#{bundle2.EditPOrderTitle_sdate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_invoice}" for="invoice" />
+                    <h:inputText id="invoice" value="#{pOrderController.selected.invoice}" title="#{bundle2.EditPOrderTitle_invoice}" />
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{pOrderController.selected.color}" title="#{bundle2.EditPOrderTitle_color}" />
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_shipOn}" for="shipOn" />
+                    <h:inputText id="shipOn" value="#{pOrderController.selected.shipOn}" title="#{bundle2.EditPOrderTitle_shipOn}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_cancelAfter}" for="cancelAfter" />
+                    <h:inputText id="cancelAfter" value="#{pOrderController.selected.cancelAfter}" title="#{bundle2.EditPOrderTitle_cancelAfter}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_ordered}" for="ordered" />
+                    <h:inputText id="ordered" value="#{pOrderController.selected.ordered}" title="#{bundle2.EditPOrderTitle_ordered}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_column1}" for="column1" />
+                    <h:inputText id="column1" value="#{pOrderController.selected.column1}" title="#{bundle2.EditPOrderTitle_column1}" />
+                    <h:outputLabel value="#{bundle2.EditPOrderLabel_totalPcs}" for="totalPcs" />
+                    <h:inputText id="totalPcs" value="#{pOrderController.selected.totalPcs}" title="#{bundle2.EditPOrderTitle_totalPcs}" />
+                </h:panelGrid>
+                <h:commandLink action="#{pOrderController.update}" value="#{bundle2.EditPOrderSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle2.EditPOrderViewLink}"/>
+                <br />
+                <h:commandLink action="#{pOrderController.prepareList}" value="#{bundle2.EditPOrderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.EditPOrderIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle8.CreateUsersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle8.CreateUsersLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{usersController.selected.id}" title="#{bundle8.CreateUsersTitle_id}" required="true" requiredMessage="#{bundle8.CreateUsersRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle8.CreateUsersLabel_userWa}" for="userWa" />
+                    <h:inputText id="userWa" value="#{usersController.selected.userWa}" title="#{bundle8.CreateUsersTitle_userWa}" />
+                    <h:outputLabel value="#{bundle8.CreateUsersLabel_passwordWa}" for="passwordWa" />
+                    <h:inputText id="passwordWa" value="#{usersController.selected.passwordWa}" title="#{bundle8.CreateUsersTitle_passwordWa}" />
+                    <h:outputLabel value="#{bundle8.CreateUsersLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{usersController.selected.name}" title="#{bundle8.CreateUsersTitle_name}" />
+                    <h:outputLabel value="#{bundle8.CreateUsersLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{usersController.selected.status}" title="#{bundle8.CreateUsersTitle_status}" />
+                    <h:outputLabel value="#{bundle8.CreateUsersLabel_corp}" for="corp" />
+                    <h:selectOneMenu id="corp" value="#{usersController.selected.corp}" title="#{bundle8.CreateUsersTitle_corp}" >
+                        <f:selectItems value="#{corpController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usersController.create}" value="#{bundle8.CreateUsersSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{usersController.prepareList}" value="#{bundle8.CreateUsersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle8.CreateUsersIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CustomersCreateDlg" widgetVar="CustomersCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCustomersTitle}">
+            <h:form id="CustomersCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{customersController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{customersController.selected.id}" title="#{bundle.CreateCustomersTitle_id}" required="true" requiredMessage="#{bundle.CreateCustomersRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{customersController.selected.name}" title="#{bundle.CreateCustomersTitle_name}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_CO}" for="CO" />
+                        <p:inputText id="CO" value="#{customersController.selected.CO}" title="#{bundle.CreateCustomersTitle_CO}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_addl1}" for="addl1" />
+                        <p:inputText id="addl1" value="#{customersController.selected.addl1}" title="#{bundle.CreateCustomersTitle_addl1}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_addl2}" for="addl2" />
+                        <p:inputText id="addl2" value="#{customersController.selected.addl2}" title="#{bundle.CreateCustomersTitle_addl2}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_city}" for="city" />
+                        <p:inputText id="city" value="#{customersController.selected.city}" title="#{bundle.CreateCustomersTitle_city}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_state}" for="state" />
+                        <p:inputText id="state" value="#{customersController.selected.state}" title="#{bundle.CreateCustomersTitle_state}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_zip}" for="zip" />
+                        <p:inputText id="zip" value="#{customersController.selected.zip}" title="#{bundle.CreateCustomersTitle_zip}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{customersController.selected.status}" title="#{bundle.CreateCustomersTitle_status}" />
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_sdate}" for="sdate" />
+                        <p:calendar id="sdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{customersController.selected.sdate}" title="#{bundle.EditCustomersTitle_sdate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCustomersLabel_corpFk}" for="corpFk" />
+                        <p:selectOneMenu id="corpFk" value="#{customersController.selected.corpFk}" >
+                            <f:selectItems value="#{corpController.itemsAvailableSelectOne}"
+                                           var="corpFkItem"
+                                           itemValue="#{corpFkItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{customersController.create}" value="#{bundle.Save}" update="display,:CustomersListForm:datalist,:growl" oncomplete="handleSubmit(args,'CustomersCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CustomersCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

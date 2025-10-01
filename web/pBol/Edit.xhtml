@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PBolEditDlg" widgetVar="PBolEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPBolTitle}">
+            <h:form id="PBolEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pBolController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPBolLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pBolController.selected.id}" title="#{bundle.EditPBolTitle_id}" required="true" requiredMessage="#{bundle.EditPBolRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditPBolLabel_sdate}" for="sdate" />
+                        <p:calendar id="sdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{pBolController.selected.sdate}" title="#{bundle.EditPBolTitle_sdate}" required="true" requiredMessage="#{bundle.EditPBolRequiredMessage_sdate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPBolLabel_seq}" for="seq" />
+                        <p:inputText id="seq" value="#{pBolController.selected.seq}" title="#{bundle.EditPBolTitle_seq}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_CCommodity}" for="CCommodity" />
+                        <p:inputText id="CCommodity" value="#{pBolController.selected.CCommodity}" title="#{bundle.EditPBolTitle_CCommodity}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_skids}" for="skids" />
+                        <p:inputText id="skids" value="#{pBolController.selected.skids}" title="#{bundle.EditPBolTitle_skids}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_weight}" for="weight" />
+                        <p:inputText id="weight" value="#{pBolController.selected.weight}" title="#{bundle.EditPBolTitle_weight}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_nfc}" for="nfc" />
+                        <p:inputText id="nfc" value="#{pBolController.selected.nfc}" title="#{bundle.EditPBolTitle_nfc}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_class1}" for="class1" />
+                        <p:inputText id="class1" value="#{pBolController.selected.class1}" title="#{bundle.EditPBolTitle_class1}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_FChargeTerms}" for="FChargeTerms" />
+                        <p:inputText id="FChargeTerms" value="#{pBolController.selected.FChargeTerms}" title="#{bundle.EditPBolTitle_FChargeTerms}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_confirmation}" for="confirmation" />
+                        <p:inputText id="confirmation" value="#{pBolController.selected.confirmation}" title="#{bundle.EditPBolTitle_confirmation}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_DValue}" for="DValue" />
+                        <p:inputText id="DValue" value="#{pBolController.selected.DValue}" title="#{bundle.EditPBolTitle_DValue}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_codAmount}" for="codAmount" />
+                        <p:inputText id="codAmount" value="#{pBolController.selected.codAmount}" title="#{bundle.EditPBolTitle_codAmount}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_CClass}" for="CClass" />
+                        <p:inputText id="CClass" value="#{pBolController.selected.CClass}" title="#{bundle.EditPBolTitle_CClass}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_CNmfc}" for="CNmfc" />
+                        <p:inputText id="CNmfc" value="#{pBolController.selected.CNmfc}" title="#{bundle.EditPBolTitle_CNmfc}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_CHm}" for="CHm" />
+                        <p:inputText id="CHm" value="#{pBolController.selected.CHm}" title="#{bundle.EditPBolTitle_CHm}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_feeTerms}" for="feeTerms" />
+                        <p:inputText id="feeTerms" value="#{pBolController.selected.feeTerms}" title="#{bundle.EditPBolTitle_feeTerms}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_trailerLoaded}" for="trailerLoaded" />
+                        <p:inputText id="trailerLoaded" value="#{pBolController.selected.trailerLoaded}" title="#{bundle.EditPBolTitle_trailerLoaded}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_freightCounted}" for="freightCounted" />
+                        <p:inputText id="freightCounted" value="#{pBolController.selected.freightCounted}" title="#{bundle.EditPBolTitle_freightCounted}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_fob}" for="fob" />
+                        <p:inputText id="fob" value="#{pBolController.selected.fob}" title="#{bundle.EditPBolTitle_fob}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_sid}" for="sid" />
+                        <p:inputText id="sid" value="#{pBolController.selected.sid}" title="#{bundle.EditPBolTitle_sid}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_trailerNo}" for="trailerNo" />
+                        <p:inputText id="trailerNo" value="#{pBolController.selected.trailerNo}" title="#{bundle.EditPBolTitle_trailerNo}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_sealNo}" for="sealNo" />
+                        <p:inputText id="sealNo" value="#{pBolController.selected.sealNo}" title="#{bundle.EditPBolTitle_sealNo}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_scac}" for="scac" />
+                        <p:inputText id="scac" value="#{pBolController.selected.scac}" title="#{bundle.EditPBolTitle_scac}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_proNo}" for="proNo" />
+                        <p:inputText id="proNo" value="#{pBolController.selected.proNo}" title="#{bundle.EditPBolTitle_proNo}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_instructions}" for="instructions" />
+                        <p:inputText id="instructions" value="#{pBolController.selected.instructions}" title="#{bundle.EditPBolTitle_instructions}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_mbolAtt}" for="mbolAtt" />
+                        <p:inputText id="mbolAtt" value="#{pBolController.selected.mbolAtt}" title="#{bundle.EditPBolTitle_mbolAtt}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_codTerms}" for="codTerms" />
+                        <p:inputText id="codTerms" value="#{pBolController.selected.codTerms}" title="#{bundle.EditPBolTitle_codTerms}" />
+                        <p:outputLabel value="#{bundle.EditPBolLabel_customerFk}" for="customerFk" />
+                        <p:selectOneMenu id="customerFk" value="#{pBolController.selected.customerFk}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{customersController.itemsAvailableSelectOne}"
+                                           var="customerFkItem"
+                                           itemValue="#{customerFkItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPBolLabel_corpFk}" for="corpFk" />
+                        <p:selectOneMenu id="corpFk" value="#{pBolController.selected.corpFk}" required="true" requiredMessage="#{bundle.EditPBolRequiredMessage_corpFk}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{corpController.itemsAvailableSelectOne}"
+                                           var="corpFkItem"
+                                           itemValue="#{corpFkItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPBolLabel_carrierFk}" for="carrierFk" />
+                        <p:selectOneMenu id="carrierFk" value="#{pBolController.selected.carrierFk}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{carriersController.itemsAvailableSelectOne}"
+                                           var="carrierFkItem"
+                                           itemValue="#{carrierFkItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pBolController.update}" value="#{bundle.Save}" update="display,:PBolListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PBolEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PBolEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.CreatePOrderDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle2.CreatePOrderDetLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pOrderDetController.selected.id}" title="#{bundle2.CreatePOrderDetTitle_id}" required="true" requiredMessage="#{bundle2.CreatePOrderDetRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle2.CreatePOrderDetLabel_style}" for="style" />
+                    <h:inputText id="style" value="#{pOrderDetController.selected.style}" title="#{bundle2.CreatePOrderDetTitle_style}" />
+                    <h:outputLabel value="#{bundle2.CreatePOrderDetLabel_pcs}" for="pcs" />
+                    <h:inputText id="pcs" value="#{pOrderDetController.selected.pcs}" title="#{bundle2.CreatePOrderDetTitle_pcs}" />
+                    <h:outputLabel value="#{bundle2.CreatePOrderDetLabel_totalPcs}" for="totalPcs" />
+                    <h:inputText id="totalPcs" value="#{pOrderDetController.selected.totalPcs}" title="#{bundle2.CreatePOrderDetTitle_totalPcs}" />
+                    <h:outputLabel value="#{bundle2.CreatePOrderDetLabel_dz}" for="dz" />
+                    <h:inputText id="dz" value="#{pOrderDetController.selected.dz}" title="#{bundle2.CreatePOrderDetTitle_dz}" />
+                    <h:outputLabel value="#{bundle2.CreatePOrderDetLabel_POrder}" for="POrder" />
+                    <h:selectOneMenu id="POrder" value="#{pOrderDetController.selected.POrder}" title="#{bundle2.CreatePOrderDetTitle_POrder}" required="true" requiredMessage="#{bundle2.CreatePOrderDetRequiredMessage_POrder}">
+                        <f:selectItems value="#{pOrderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pOrderDetController.create}" value="#{bundle2.CreatePOrderDetSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pOrderDetController.prepareList}" value="#{bundle2.CreatePOrderDetShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.CreatePOrderDetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

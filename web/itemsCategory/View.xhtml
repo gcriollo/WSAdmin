@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.ViewItemsCategoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle2.ViewItemsCategoryLabel_id}"/>
+                    <h:outputText value="#{itemsCategoryController.selected.id}" title="#{bundle2.ViewItemsCategoryTitle_id}"/>
+                    <h:outputText value="#{bundle2.ViewItemsCategoryLabel_category}"/>
+                    <h:outputText value="#{itemsCategoryController.selected.category}" title="#{bundle2.ViewItemsCategoryTitle_category}"/>
+                    <h:outputText value="#{bundle2.ViewItemsCategoryLabel_status}"/>
+                    <h:outputText value="#{itemsCategoryController.selected.status}" title="#{bundle2.ViewItemsCategoryTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemsCategoryController.destroyAndView}" value="#{bundle2.ViewItemsCategoryDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle2.ViewItemsCategoryEditLink}"/>
+                <br />
+                <h:commandLink action="#{itemsCategoryController.prepareCreate}" value="#{bundle2.ViewItemsCategoryCreateLink}" />
+                <br />
+                <h:commandLink action="#{itemsCategoryController.prepareList}" value="#{bundle2.ViewItemsCategoryShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.ViewItemsCategoryIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.ListPOrderDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle2.ListPOrderDetEmpty}" rendered="#{pOrderDetController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pOrderDetController.items.rowCount > 0}">
+                    <h:outputText value="#{pOrderDetController.pagination.pageFirstItem + 1}..#{pOrderDetController.pagination.pageLastItem + 1}/#{pOrderDetController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pOrderDetController.previous}" value="#{bundle2.Previous} #{pOrderDetController.pagination.pageSize}" rendered="#{pOrderDetController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pOrderDetController.next}" value="#{bundle2.Next} #{pOrderDetController.pagination.pageSize}" rendered="#{pOrderDetController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pOrderDetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListPOrderDetTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListPOrderDetTitle_style}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.style}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListPOrderDetTitle_pcs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pcs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListPOrderDetTitle_totalPcs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalPcs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListPOrderDetTitle_dz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListPOrderDetTitle_POrder}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.POrder}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pOrderDetController.prepareView}" value="#{bundle2.ListPOrderDetViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pOrderDetController.prepareEdit}" value="#{bundle2.ListPOrderDetEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pOrderDetController.destroy}" value="#{bundle2.ListPOrderDetDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pOrderDetController.prepareCreate}" value="#{bundle2.ListPOrderDetCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.ListPOrderDetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

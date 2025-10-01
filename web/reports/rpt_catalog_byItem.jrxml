@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_catalog_byItem" language="groovy" columnCount="3" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="267" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79fdc308-8a85-41aa-bc6f-d64a12d3090f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_CORP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_ADDINVENTORY" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_RPTID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.name corp_name,
+       c.addl1,
+       c.addl2,
+       c.phone,
+       c.email,
+       rpt_c.title,
+       rpt_c.name_for,
+       rpt_c.note,
+       i.code,
+       i.description,
+       idet.color,
+       idet.qty_units,
+       idet.pic,
+       rpt_c.id,
+       rpt_d.id_item_det
+from RPT_ITEMS_CTLG_DET rpt_d, rpt_items_ctlg rpt_c, items_det idet, items i, corp c
+where rpt_d.id_item_det = idet.id
+  and i.id = idet.item_fk
+  and i.corp = $P{P_CORP}
+  and rpt_d.corp = i.corp
+  and c.id = i.corp
+  and rpt_c.id = $P{P_RPTID}
+  and rpt_d.id_rpt = rpt_c.id]]>
+	</queryString>
+	<field name="CORP_NAME" class="java.lang.String"/>
+	<field name="ADDL1" class="java.lang.String"/>
+	<field name="ADDL2" class="java.lang.String"/>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="TITLE" class="java.lang.String"/>
+	<field name="NAME_FOR" class="java.lang.String"/>
+	<field name="NOTE" class="java.lang.String"/>
+	<field name="CODE" class="java.lang.String"/>
+	<field name="DESCRIPTION" class="java.lang.String"/>
+	<field name="COLOR" class="java.lang.String"/>
+	<field name="QTY_UNITS" class="java.math.BigDecimal"/>
+	<field name="PIC" class="java.lang.String"/>
+	<field name="ID" class="java.math.BigDecimal"/>
+	<field name="ID_ITEM_DET" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="1" width="395" height="20" forecolor="#009999" uuid="6fb85d72-ed9a-4787-807e-0064010f2e58"/>
+				<textElement>
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CORP_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="21" width="800" height="16" uuid="4f87e883-ecda-463c-b37c-94b5b068d233"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TITLE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="37" width="395" height="17" uuid="43ee4a3f-1249-4fec-9d32-09203e9e3cc5"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["For: "+$F{NAME_FOR}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-22" y="-259" width="805" height="2" forecolor="#00FFCC" uuid="17d6c361-7699-4530-ac43-17d90e3eeaf6"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="156" splitType="Stretch">
+			<line>
+				<reportElement x="34" y="146" width="205" height="1" forecolor="#00FF99" uuid="4ab7cb4e-6e8d-4c78-8dcd-455704e2cb9c"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<image hAlign="Center" onErrorType="Blank">
+				<reportElement x="36" y="7" width="200" height="100" uuid="e5367fc9-db55-4fd5-8fcc-1a365a0a4f9d"/>
+				<imageExpression><![CDATA[$F{PIC}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="36" y="111" width="42" height="15" uuid="e9235226-9641-436f-9a28-8757193f47ee"/>
+				<text><![CDATA[STYLE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="36" y="125" width="153" height="15" uuid="6a355baf-921a-4500-97ba-ab67d92f39cc"/>
+				<textFieldExpression><![CDATA[$P{P_ADDINVENTORY} ? ("Inventory: "+$F{QTY_UNITS}+" Units") :" "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="111" width="73" height="15" uuid="2d0902a2-d8bb-4efb-ab69-518417ae5ae4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{COLOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="111" width="81" height="15" uuid="4ff1d326-0819-4cef-8d54-e9282f501221"/>
+				<textFieldExpression><![CDATA[$F{CODE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="47" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="265" y="2" width="537" height="20" uuid="25ae4922-e6a4-4d22-b011-2676464c800a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDL1}+" "+$F{ADDL2}+" * Phone:"+$F{PHONE}+" * email:"+$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="2" width="805" height="2" forecolor="#00FFCC" uuid="3827b804-9e0a-484f-9579-2f42a5b72fba"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="-162" width="805" height="2" forecolor="#00FFCC" uuid="dfc1fc97-578a-43e6-8dea-6fb7b5618f1d"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

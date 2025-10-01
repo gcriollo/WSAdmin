@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.EditRptItemsCtlgDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_qtyUnits}" for="qtyUnits" />
+                    <h:inputText id="qtyUnits" value="#{rptItemsCtlgDetController.selected.qtyUnits}" title="#{bundle2.EditRptItemsCtlgDetTitle_qtyUnits}" />
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_rptTitle}" for="rptTitle" />
+                    <h:inputText id="rptTitle" value="#{rptItemsCtlgDetController.selected.rptTitle}" title="#{bundle2.EditRptItemsCtlgDetTitle_rptTitle}" />
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_rptFor}" for="rptFor" />
+                    <h:inputText id="rptFor" value="#{rptItemsCtlgDetController.selected.rptFor}" title="#{bundle2.EditRptItemsCtlgDetTitle_rptFor}" />
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_rptNote}" for="rptNote" />
+                    <h:inputText id="rptNote" value="#{rptItemsCtlgDetController.selected.rptNote}" title="#{bundle2.EditRptItemsCtlgDetTitle_rptNote}" />
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rptItemsCtlgDetController.selected.id}" title="#{bundle2.EditRptItemsCtlgDetTitle_id}" required="true" requiredMessage="#{bundle2.EditRptItemsCtlgDetRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_idItemDet}" for="idItemDet" />
+                    <h:selectOneMenu id="idItemDet" value="#{rptItemsCtlgDetController.selected.idItemDet}" title="#{bundle2.EditRptItemsCtlgDetTitle_idItemDet}" >
+                        <f:selectItems value="#{itemsDetController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_corp}" for="corp" />
+                    <h:selectOneMenu id="corp" value="#{rptItemsCtlgDetController.selected.corp}" title="#{bundle2.EditRptItemsCtlgDetTitle_corp}" >
+                        <f:selectItems value="#{corpController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle2.EditRptItemsCtlgDetLabel_idRpt}" for="idRpt" />
+                    <h:selectOneMenu id="idRpt" value="#{rptItemsCtlgDetController.selected.idRpt}" title="#{bundle2.EditRptItemsCtlgDetTitle_idRpt}" required="true" requiredMessage="#{bundle2.EditRptItemsCtlgDetRequiredMessage_idRpt}">
+                        <f:selectItems value="#{rptItemsCtlgController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{rptItemsCtlgDetController.update}" value="#{bundle2.EditRptItemsCtlgDetSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle2.EditRptItemsCtlgDetViewLink}"/>
+                <br />
+                <h:commandLink action="#{rptItemsCtlgDetController.prepareList}" value="#{bundle2.EditRptItemsCtlgDetShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.EditRptItemsCtlgDetIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

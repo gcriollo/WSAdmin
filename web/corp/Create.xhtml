@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle8.CreateCorpTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{corpController.selected.id}" title="#{bundle8.CreateCorpTitle_id}" required="true" requiredMessage="#{bundle8.CreateCorpRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{corpController.selected.name}" title="#{bundle8.CreateCorpTitle_name}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_addl1}" for="addl1" />
+                    <h:inputText id="addl1" value="#{corpController.selected.addl1}" title="#{bundle8.CreateCorpTitle_addl1}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_addl2}" for="addl2" />
+                    <h:inputText id="addl2" value="#{corpController.selected.addl2}" title="#{bundle8.CreateCorpTitle_addl2}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_state}" for="state" />
+                    <h:inputText id="state" value="#{corpController.selected.state}" title="#{bundle8.CreateCorpTitle_state}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_city}" for="city" />
+                    <h:inputText id="city" value="#{corpController.selected.city}" title="#{bundle8.CreateCorpTitle_city}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_urlReports}" for="urlReports" />
+                    <h:inputText id="urlReports" value="#{corpController.selected.urlReports}" title="#{bundle8.CreateCorpTitle_urlReports}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_zipcode}" for="zipcode" />
+                    <h:inputText id="zipcode" value="#{corpController.selected.zipcode}" title="#{bundle8.CreateCorpTitle_zipcode}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{corpController.selected.phone}" title="#{bundle8.CreateCorpTitle_phone}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_urlitempics}" for="urlitempics" />
+                    <h:inputText id="urlitempics" value="#{corpController.selected.urlitempics}" title="#{bundle8.CreateCorpTitle_urlitempics}" />
+                    <h:outputLabel value="#{bundle8.CreateCorpLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{corpController.selected.email}" title="#{bundle8.CreateCorpTitle_email}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{corpController.create}" value="#{bundle8.CreateCorpSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{corpController.prepareList}" value="#{bundle8.CreateCorpShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle8.CreateCorpIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

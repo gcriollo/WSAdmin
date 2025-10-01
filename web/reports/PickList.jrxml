@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PickList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e940d09b-9d3e-41a0-bca4-4a433edecb82">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_PONUMBER" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.name, to_char(p.ship_on,'mm/dd/yyyy') ship_on, to_char(p.cancel_after, 'mm/dd/yyyy') cancel_after, pod.style, pod.pcs, pod.color,trunc((pod.pcs/12),0) doz ,
+(((pod.pcs/12) - trunc((pod.pcs/12),0))*12) add_units
+from p_order p, p_order_det pod, customers c
+where p.po = $P{P_PONUMBER}
+and p.id = pod.p_order
+and c.id = p.customer
+and pod.pcs > 0
+order by pod.id asc]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="SHIP_ON" class="java.lang.String"/>
+	<field name="CANCEL_AFTER" class="java.lang.String"/>
+	<field name="STYLE" class="java.lang.String"/>
+	<field name="PCS" class="java.math.BigDecimal"/>
+	<field name="COLOR" class="java.lang.String"/>
+	<field name="DOZ" class="java.math.BigDecimal"/>
+	<field name="ADD_UNITS" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="170" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="13" width="357" height="28" forecolor="#009999" uuid="d6a27802-561a-4978-a2c4-ddbbde9ec7fa"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GLOBAL ACCESSORIES PLUS CORP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="44" width="100" height="26" uuid="b97bc701-a395-4647-b193-b61ed3cc4454"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PICK LIST]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="401" y="78" width="155" height="22" uuid="a924a40c-456e-418d-b243-08c88725c86a"/>
+				<textElement textAlignment="Right">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_PONUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="367" y="78" width="34" height="22" uuid="63e4ae95-860c-407e-89d3-87acf9a299b1"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="112" width="61" height="20" uuid="2e28127c-aded-497d-bb73-4755b1150b9f"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ship on:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="401" y="112" width="155" height="20" uuid="733c28b4-e57d-4280-8d56-84d27ca6b974"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHIP_ON}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="308" y="132" width="93" height="20" uuid="13c8fda9-e2a5-41b2-b692-43700f29d7be"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cancel After:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="401" y="132" width="155" height="20" uuid="f9a6b170-4929-4fed-8741-b86af25ff9d1"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CANCEL_AFTER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="100" width="290" height="70" uuid="fb5fcefd-923d-45d3-b750-7e89e52d0be2"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="78" width="99" height="22" uuid="2dc2ca94-602c-43bd-95e6-442ac7e8d561"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUSTOMER:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="3" width="555" height="1" uuid="cd1383cb-c3e6-4240-8839-eefe4bebabaf"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="22" width="555" height="1" uuid="b4bde5c7-0d2e-4cf2-b308-da484cbe8d5a"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="3" width="100" height="20" uuid="5b667c86-2b0c-487f-96a4-cc825cdc4a1d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STYLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="3" width="131" height="20" uuid="93930551-379b-4d58-88e8-e30e3c231199"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COLOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="3" width="101" height="20" uuid="97205bc4-1f8e-4be9-ae71-3362adb0941d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="3" width="71" height="20" uuid="11324098-75c9-42da-9901-1f723aadc5d3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADD. PCS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="6" width="100" height="24" uuid="51b872bb-4e86-4bdc-a549-63efefbabb86"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{STYLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="6" width="131" height="24" uuid="f155fa88-226e-4744-9166-1302eaecb052"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="6" width="101" height="24" uuid="6dcee752-b350-428b-811d-8ab0a70ddd31"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="6" width="71" height="24" uuid="3590d5ec-0c97-4118-926a-cba456025804"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADD_UNITS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="455" y="25" width="100" height="20" uuid="14762002-ca40-4b69-8561-66325c1f758c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="25" width="80" height="20" uuid="86d3cd41-955f-44fc-bceb-3c8c8de21bed"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="291" y="25" width="40" height="20" uuid="4664c12b-0f0b-4e96-a455-4ebfb1dac0d8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PBolDetEditDlg" widgetVar="PBolDetEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPBolDetTitle}">
+            <h:form id="PBolDetEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pBolDetController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pBolDetController.selected.id}" title="#{bundle.EditPBolDetTitle_id}" required="true" requiredMessage="#{bundle.EditPBolDetRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_po}" for="po" />
+                        <p:inputText id="po" value="#{pBolDetController.selected.po}" title="#{bundle.EditPBolDetTitle_po}" />
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_invoice}" for="invoice" />
+                        <p:inputText id="invoice" value="#{pBolDetController.selected.invoice}" title="#{bundle.EditPBolDetTitle_invoice}" />
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_ctns}" for="ctns" />
+                        <p:inputText id="ctns" value="#{pBolDetController.selected.ctns}" title="#{bundle.EditPBolDetTitle_ctns}" required="true" requiredMessage="#{bundle.EditPBolDetRequiredMessage_ctns}"/>
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_weight}" for="weight" />
+                        <p:inputText id="weight" value="#{pBolDetController.selected.weight}" title="#{bundle.EditPBolDetTitle_weight}" required="true" requiredMessage="#{bundle.EditPBolDetRequiredMessage_weight}"/>
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_palletSlip1}" for="palletSlip1" />
+                        <p:inputText id="palletSlip1" value="#{pBolDetController.selected.palletSlip1}" title="#{bundle.EditPBolDetTitle_palletSlip1}" />
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_palletSlip2}" for="palletSlip2" />
+                        <p:inputText id="palletSlip2" value="#{pBolDetController.selected.palletSlip2}" title="#{bundle.EditPBolDetTitle_palletSlip2}" />
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_addShipinfo}" for="addShipinfo" />
+                        <p:inputText id="addShipinfo" value="#{pBolDetController.selected.addShipinfo}" title="#{bundle.EditPBolDetTitle_addShipinfo}" />
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{pBolDetController.selected.status}" title="#{bundle.EditPBolDetTitle_status}" />
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_sdate}" for="sdate" />
+                        <p:calendar id="sdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{pBolDetController.selected.sdate}" title="#{bundle.EditPBolDetTitle_sdate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPBolDetLabel_bolFk}" for="bolFk" />
+                        <p:selectOneMenu id="bolFk" value="#{pBolDetController.selected.bolFk}" required="true" requiredMessage="#{bundle.EditPBolDetRequiredMessage_bolFk}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pBolController.itemsAvailableSelectOne}"
+                                           var="bolFkItem"
+                                           itemValue="#{bolFkItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pBolDetController.update}" value="#{bundle.Save}" update="display,:PBolDetListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PBolDetEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PBolDetEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

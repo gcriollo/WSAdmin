@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="catalog_general_category" columnCount="3" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="267" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9cec8648-2899-4818-914a-45873ab0452b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="22"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_IDCATEGORY" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_GENDER" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CORP" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_ADDINVENTORY" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_UNISEX" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.name, c.addl1, c.addl2, c.phone, c.email, i.code,
+ic.category,
+i.description,
+idet.color,
+idet.i_size,
+idet.qty_units,
+idet.pic,
+idet.pic_name,
+case idet.gender
+when 'M' then 'Men'
+when 'W' then 'Women'
+when 'KG' then 'Girls'
+when 'KB' then 'Boys'
+when 'U' then 'Unisex'
+end as gender
+from items i, items_det idet, items_category ic, corp c
+where i.id = idet.item_fk
+  and i.categoryfk = ic.id
+  and idet.gender in ($P{P_GENDER},$P{P_UNISEX})
+  and ic.id = $P{P_IDCATEGORY}
+  and c.id = $P{P_CORP}
+  and c.id = idet.corp
+  and idet.corp = i.corp
+order by code, idet.gender asc]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="ADDL1" class="java.lang.String"/>
+	<field name="ADDL2" class="java.lang.String"/>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="CODE" class="java.lang.String"/>
+	<field name="CATEGORY" class="java.lang.String"/>
+	<field name="DESCRIPTION" class="java.lang.String"/>
+	<field name="COLOR" class="java.lang.String"/>
+	<field name="I_SIZE" class="java.lang.String"/>
+	<field name="QTY_UNITS" class="java.math.BigDecimal"/>
+	<field name="PIC" class="java.lang.String"/>
+	<field name="PIC_NAME" class="java.lang.String"/>
+	<field name="GENDER" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="13" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="22" width="299" height="18" uuid="26f9b830-03f7-41f4-b406-e320ce93246a"/>
+				<textElement>
+					<font fontName="Verdana" size="14" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CATEGORY}+" for "+$F{GENDER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="41" width="805" height="2" forecolor="#00FFCC" uuid="d6d25441-6b2d-49a0-bbad-23a2568afc63"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="2" width="395" height="20" forecolor="#009999" uuid="33e772de-0525-4984-8f7c-6e46a3dcadf2"/>
+				<textElement>
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="681" y="1" width="80" height="20" uuid="2510542a-d72d-48f2-bb4c-0875ea81f136"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="761" y="1" width="40" height="20" uuid="a0614a7c-8a7d-4f7e-b334-659da0c4646a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="146" splitType="Stretch">
+			<textField>
+				<reportElement x="73" y="107" width="81" height="15" uuid="2654732b-9fb6-453f-a886-973cdd4c61a0"/>
+				<textFieldExpression><![CDATA[$F{CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="107" width="73" height="15" uuid="77ee4316-0f8f-488c-ac0f-c240bdd941b5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{COLOR}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" onErrorType="Blank">
+				<reportElement x="31" y="7" width="200" height="100" uuid="958df3f0-b6e5-4272-8bd3-fa1bf558604b"/>
+				<imageExpression><![CDATA[$F{PIC}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="31" y="107" width="42" height="15" uuid="4558ed64-8b0a-44ee-8c83-d62184f1c11d"/>
+				<text><![CDATA[STYLE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="121" width="153" height="15" uuid="33e7131c-ef31-47aa-8432-a08caa609d70"/>
+				<textFieldExpression><![CDATA[$P{P_ADDINVENTORY} ? ("Inventory: "+$F{QTY_UNITS}+" Units") :" "]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="28" y="136" width="205" height="1" forecolor="#FFCC99" uuid="445064d3-1c02-430b-9eb3-5fbcab481da8"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement x="-1" y="3" width="805" height="1" forecolor="#00FFFF" uuid="48f8db7f-64bf-4ba7-b9aa-bd0c2d6d1cc7"/>
+			</line>
+			<textField>
+				<reportElement x="262" y="13" width="538" height="15" forecolor="#333333" uuid="f86f220a-d950-4838-b5d1-ce440ad25678"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ADDL1}+", "+$F{ADDL2}+" * "+$F{PHONE}+" * "+$F{EMAIL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle8.ViewCorpTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle8.ViewCorpLabel_id}"/>
+                    <h:outputText value="#{corpController.selected.id}" title="#{bundle8.ViewCorpTitle_id}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_name}"/>
+                    <h:outputText value="#{corpController.selected.name}" title="#{bundle8.ViewCorpTitle_name}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_addl1}"/>
+                    <h:outputText value="#{corpController.selected.addl1}" title="#{bundle8.ViewCorpTitle_addl1}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_addl2}"/>
+                    <h:outputText value="#{corpController.selected.addl2}" title="#{bundle8.ViewCorpTitle_addl2}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_state}"/>
+                    <h:outputText value="#{corpController.selected.state}" title="#{bundle8.ViewCorpTitle_state}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_city}"/>
+                    <h:outputText value="#{corpController.selected.city}" title="#{bundle8.ViewCorpTitle_city}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_urlReports}"/>
+                    <h:outputText value="#{corpController.selected.urlReports}" title="#{bundle8.ViewCorpTitle_urlReports}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_zipcode}"/>
+                    <h:outputText value="#{corpController.selected.zipcode}" title="#{bundle8.ViewCorpTitle_zipcode}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_phone}"/>
+                    <h:outputText value="#{corpController.selected.phone}" title="#{bundle8.ViewCorpTitle_phone}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_urlitempics}"/>
+                    <h:outputText value="#{corpController.selected.urlitempics}" title="#{bundle8.ViewCorpTitle_urlitempics}"/>
+                    <h:outputText value="#{bundle8.ViewCorpLabel_email}"/>
+                    <h:outputText value="#{corpController.selected.email}" title="#{bundle8.ViewCorpTitle_email}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{corpController.destroyAndView}" value="#{bundle8.ViewCorpDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle8.ViewCorpEditLink}"/>
+                <br />
+                <h:commandLink action="#{corpController.prepareCreate}" value="#{bundle8.ViewCorpCreateLink}" />
+                <br />
+                <h:commandLink action="#{corpController.prepareList}" value="#{bundle8.ViewCorpShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle8.ViewCorpIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

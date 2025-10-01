@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.CreatePOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pOrderController.selected.id}" title="#{bundle2.CreatePOrderTitle_id}" required="true" requiredMessage="#{bundle2.CreatePOrderRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_po}" for="po" />
+                    <h:inputText id="po" value="#{pOrderController.selected.po}" title="#{bundle2.CreatePOrderTitle_po}" required="true" requiredMessage="#{bundle2.CreatePOrderRequiredMessage_po}"/>
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_sdate}" for="sdate" />
+                    <h:inputText id="sdate" value="#{pOrderController.selected.sdate}" title="#{bundle2.CreatePOrderTitle_sdate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_invoice}" for="invoice" />
+                    <h:inputText id="invoice" value="#{pOrderController.selected.invoice}" title="#{bundle2.CreatePOrderTitle_invoice}" />
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{pOrderController.selected.color}" title="#{bundle2.CreatePOrderTitle_color}" />
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_shipOn}" for="shipOn" />
+                    <h:inputText id="shipOn" value="#{pOrderController.selected.shipOn}" title="#{bundle2.CreatePOrderTitle_shipOn}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_cancelAfter}" for="cancelAfter" />
+                    <h:inputText id="cancelAfter" value="#{pOrderController.selected.cancelAfter}" title="#{bundle2.CreatePOrderTitle_cancelAfter}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_ordered}" for="ordered" />
+                    <h:inputText id="ordered" value="#{pOrderController.selected.ordered}" title="#{bundle2.CreatePOrderTitle_ordered}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle2.CreatePOrderLabel_totalPcs}" for="totalPcs" />
+                    <h:inputText id="totalPcs" value="#{pOrderController.selected.totalPcs}" title="#{bundle2.CreatePOrderTitle_totalPcs}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pOrderController.create}" value="#{bundle2.CreatePOrderSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pOrderController.prepareList}" value="#{bundle2.CreatePOrderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.CreatePOrderIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

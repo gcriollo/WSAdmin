@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ShippingLabel_Simple" pageWidth="297" pageHeight="421" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f2f3329c-72be-4c8b-bec5-61056b17b2ff">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_ponumber" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_gid" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT b.NAME,b.addl1,b.addl2, b.phone, a.ID,a.PO, a.dz_box, a.style, a.n_box,a.invoice,
+CASE a.units_box WHEN 0 THEN ' '
+   ELSE concat(a.units_box,' PCS') END units_box2,
+CASE a.po WHEN '-' THEN ' '
+   ELSE concat('PO: ', a.po) END po_number,
+a.osgroup, a.shipto, a.total_box, a.color
+FROM P_MAKELABELS a INNER JOIN CORP b ON a.CORP = b.ID
+WHERE a.po =$P{p_ponumber}  and a.g_id = $P{p_gid}
+ORDER BY a.osgroup ASC]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="ADDL1" class="java.lang.String"/>
+	<field name="ADDL2" class="java.lang.String"/>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="ID" class="java.math.BigDecimal"/>
+	<field name="PO" class="java.lang.String"/>
+	<field name="DZ_BOX" class="java.math.BigDecimal"/>
+	<field name="STYLE" class="java.lang.String"/>
+	<field name="N_BOX" class="java.math.BigDecimal"/>
+	<field name="INVOICE" class="java.math.BigDecimal"/>
+	<field name="UNITS_BOX2" class="java.lang.String"/>
+	<field name="PO_NUMBER" class="java.lang.String"/>
+	<field name="OSGROUP" class="java.math.BigDecimal"/>
+	<field name="SHIPTO" class="java.lang.String"/>
+	<field name="TOTAL_BOX" class="java.math.BigDecimal"/>
+	<field name="COLOR" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="13" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="396" splitType="Stretch">
+			<textField>
+				<reportElement x="178" y="360" width="79" height="30" uuid="26057b3c-0556-405e-ae62-393cb3eb2618"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL_BOX}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="62" width="167" height="17" uuid="2856b237-26c8-4325-baa4-a7d91ab7dc16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDL2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="37" y="360" width="63" height="30" uuid="ea317f7f-9a3a-4695-a607-2bd83fe3691b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OSGROUP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="37" y="42" width="209" height="20" uuid="6f0f16b8-0459-4c2b-94b1-ec985dd729de"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDL1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="24" width="297" height="18" uuid="a569eff7-fb1f-4cdf-a2d6-fd21c9632b0c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="78" width="166" height="17" uuid="43301df9-a5ff-4e9d-8f4e-07798d961b70"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Phone:"+$F{PHONE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="118" y="360" width="42" height="30" uuid="f0061ac4-5cc0-4c1c-9c1c-916f952c5a80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="126" width="277" height="174" uuid="5a29d4ae-fa7f-4b5b-82bb-78c50f15ac56"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHIPTO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="52" y="329" width="92" height="20" uuid="f01cc76a-eefc-4369-b494-33e482ac5834"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVOICE #]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="144" y="324" width="95" height="25" uuid="ff541a5e-cf99-47ac-beaa-b0e09a6bcac8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INVOICE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="88" y="106" width="100" height="20" uuid="7b7b1023-0235-4e9d-be47-660067bacc46"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHIP TO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="302" width="187" height="22" uuid="f68fba2b-c806-4fcd-9ff6-753e3128d394"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PO_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

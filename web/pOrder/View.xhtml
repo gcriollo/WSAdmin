@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.ViewPOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_id}"/>
+                    <h:outputText value="#{pOrderController.selected.id}" title="#{bundle2.ViewPOrderTitle_id}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_po}"/>
+                    <h:outputText value="#{pOrderController.selected.po}" title="#{bundle2.ViewPOrderTitle_po}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_sdate}"/>
+                    <h:outputText value="#{pOrderController.selected.sdate}" title="#{bundle2.ViewPOrderTitle_sdate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_invoice}"/>
+                    <h:outputText value="#{pOrderController.selected.invoice}" title="#{bundle2.ViewPOrderTitle_invoice}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_color}"/>
+                    <h:outputText value="#{pOrderController.selected.color}" title="#{bundle2.ViewPOrderTitle_color}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_shipOn}"/>
+                    <h:outputText value="#{pOrderController.selected.shipOn}" title="#{bundle2.ViewPOrderTitle_shipOn}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_cancelAfter}"/>
+                    <h:outputText value="#{pOrderController.selected.cancelAfter}" title="#{bundle2.ViewPOrderTitle_cancelAfter}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_ordered}"/>
+                    <h:outputText value="#{pOrderController.selected.ordered}" title="#{bundle2.ViewPOrderTitle_ordered}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_column1}"/>
+                    <h:outputText value="#{pOrderController.selected.column1}" title="#{bundle2.ViewPOrderTitle_column1}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderLabel_totalPcs}"/>
+                    <h:outputText value="#{pOrderController.selected.totalPcs}" title="#{bundle2.ViewPOrderTitle_totalPcs}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pOrderController.destroyAndView}" value="#{bundle2.ViewPOrderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle2.ViewPOrderEditLink}"/>
+                <br />
+                <h:commandLink action="#{pOrderController.prepareCreate}" value="#{bundle2.ViewPOrderCreateLink}" />
+                <br />
+                <h:commandLink action="#{pOrderController.prepareList}" value="#{bundle2.ViewPOrderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.ViewPOrderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,18 @@
+select i.code,
+ic.category,
+i.description, 
+idet.color, 
+idet.i_size,
+idet.qty_units, 
+idet.pic, 
+idet.pic_name,
+case idet.gender
+when 'M' then 'Men'
+when 'W' then 'Women'
+when 'KG' then 'Girls'
+when 'KB' then 'Boys'
+when 'U' then 'Unisex'
+end as gender
+from items i, items_det idet, items_category ic
+where i.id = idet.item_fk
+  and i.categoryfk = ic.id;

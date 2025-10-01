@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle4.EditItemsDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{itemsDetController.selected.id}" title="#{bundle4.EditItemsDetTitle_id}" required="true" requiredMessage="#{bundle4.EditItemsDetRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_color}" for="color" />
+                    <h:inputText id="color" value="#{itemsDetController.selected.color}" title="#{bundle4.EditItemsDetTitle_color}" required="true" requiredMessage="#{bundle4.EditItemsDetRequiredMessage_color}"/>
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_sdate}" for="sdate" />
+                    <h:inputText id="sdate" value="#{itemsDetController.selected.sdate}" title="#{bundle4.EditItemsDetTitle_sdate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{itemsDetController.selected.status}" title="#{bundle4.EditItemsDetTitle_status}" required="true" requiredMessage="#{bundle4.EditItemsDetRequiredMessage_status}"/>
+                    
+                    <h:selectOneMenu id="itemFk" value="#{itemsDetController.selected.itemFk}" title="#{bundle4.EditItemsDetTitle_itemFk}" required="true" requiredMessage="#{bundle4.EditItemsDetRequiredMessage_itemFk}">
+                        <f:selectItems value="#{itemsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_ISize}" for="ISize" />
+                    <h:inputText id="ISize" value="#{itemsDetController.selected.ISize}" title="#{bundle4.EditItemsDetTitle_ISize}" />
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_qtyUnits}" for="qtyUnits" />
+                    <h:inputText id="qtyUnits" value="#{itemsDetController.selected.qtyUnits}" title="#{bundle4.EditItemsDetTitle_qtyUnits}" />
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_pic}" for="pic" />
+                    <h:inputText id="pic" value="#{itemsDetController.selected.pic}" title="#{bundle4.EditItemsDetTitle_pic}" />
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_brand}" for="brand" />
+                    <h:inputText id="brand" value="#{itemsDetController.selected.brand}" title="#{bundle4.EditItemsDetTitle_brand}" />
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_qtyOrig}" for="qtyOrig" />
+                    <h:inputText id="qtyOrig" value="#{itemsDetController.selected.qtyOrig}" title="#{bundle4.EditItemsDetTitle_qtyOrig}" />
+                    <h:outputLabel value="#{bundle4.EditItemsDetLabel_sdateQty}" for="sdateQty" />
+                    <h:inputText id="sdateQty" value="#{itemsDetController.selected.sdateQty}" title="#{bundle4.EditItemsDetTitle_sdateQty}" />
+                </h:panelGrid>
+                <h:commandLink action="#{itemsDetController.update}" value="#{bundle4.EditItemsDetSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle4.EditItemsDetViewLink}"/>
+                <br />
+                <h:commandLink action="#{itemsDetController.prepareList}" value="#{bundle4.EditItemsDetShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle4.EditItemsDetIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

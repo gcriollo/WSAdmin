@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPBolTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PBolListForm">
+                <p:panel header="#{bundle.ListPBolTitle}">
+                    <p:dataTable id="datalist" value="#{pBolController.items}" var="item"
+                                 selectionMode="single" selection="#{pBolController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_sdate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sdate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_seq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.seq}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_CCommodity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.CCommodity}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_skids}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.skids}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_weight}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.weight}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_nfc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nfc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_class1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.class1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_FChargeTerms}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.FChargeTerms}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_confirmation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.confirmation}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_DValue}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.DValue}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_codAmount}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codAmount}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_CClass}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.CClass}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_CNmfc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.CNmfc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_CHm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.CHm}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_feeTerms}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feeTerms}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_trailerLoaded}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.trailerLoaded}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_freightCounted}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.freightCounted}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_fob}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fob}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_sid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sid}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_trailerNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.trailerNo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_sealNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sealNo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_scac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.scac}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_proNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proNo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_instructions}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.instructions}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_mbolAtt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mbolAtt}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_codTerms}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codTerms}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_customerFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.customerFk}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_corpFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.corpFk}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPBolTitle_carrierFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carrierFk}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pBolController.prepareCreate}" update=":PBolCreateForm" oncomplete="PF('PBolCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PBolViewForm" oncomplete="PF('PBolViewDialog').show()" disabled="#{empty pBolController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PBolEditForm" oncomplete="PF('PBolEditDialog').show()" disabled="#{empty pBolController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pBolController.destroy}" update=":growl,datalist" disabled="#{empty pBolController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

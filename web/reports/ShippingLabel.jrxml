@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" printOrder="Horizontal" pageWidth="560" pageHeight="802" columnWidth="246" columnSpacing="50" leftMargin="10" rightMargin="7" topMargin="0" bottomMargin="0" uuid="572f6a63-2e07-4384-b1ea-e310ca8c7856">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_ponumber" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_osgroup" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_gid" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT b.NAME,b.addl1,b.addl2, b.phone, a.ID,a.PO, a.dz_box, a.style, a.n_box,a.invoice,a.V_style,
+CASE a.units_box WHEN 0 THEN ' '
+   ELSE concat(a.units_box,' PCS') END units_box2,
+a.osgroup, a.shipto, a.total_box, a.color
+FROM P_MAKELABELS a INNER JOIN CORP b ON a.CORP = b.ID
+WHERE a.po =$P{p_ponumber}  and a.g_id = $P{p_gid}
+ORDER BY a.osgroup ASC]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="ADDL1" class="java.lang.String"/>
+	<field name="ADDL2" class="java.lang.String"/>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="ID" class="java.math.BigDecimal"/>
+	<field name="PO" class="java.lang.String"/>
+	<field name="DZ_BOX" class="java.math.BigDecimal"/>
+	<field name="STYLE" class="java.lang.String"/>
+	<field name="N_BOX" class="java.math.BigDecimal"/>
+	<field name="INVOICE" class="java.math.BigDecimal"/>
+	<field name="V_STYLE" class="java.lang.String"/>
+	<field name="UNITS_BOX2" class="java.lang.String"/>
+	<field name="OSGROUP" class="java.math.BigDecimal"/>
+	<field name="SHIPTO" class="java.lang.String"/>
+	<field name="TOTAL_BOX" class="java.math.BigDecimal"/>
+	<field name="COLOR" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="382" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="131" width="65" height="20" forecolor="#000000" uuid="5a9ef398-6417-44ea-b18b-f5ff5795dd1d"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHIP TO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="151" width="231" height="93" forecolor="#000000" uuid="9854d465-b820-4d4a-8edc-11ab7e78afb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHIPTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="280" width="167" height="18" forecolor="#000000" uuid="f7c565d0-73d9-46b5-9e5c-a7bbd2a119cf"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{STYLE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="281" width="68" height="18" forecolor="#000000" uuid="d01ab058-2e4a-44a6-aebe-04ccccdf725d"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STYLE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="329" width="68" height="18" forecolor="#000000" uuid="98f0dcf1-47a4-4c48-98fc-eefb95546d36"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COLOR:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="82" y="329" width="167" height="18" forecolor="#000000" uuid="4764607f-8786-4956-8973-9845a326cce7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="349" width="68" height="20" forecolor="#000000" uuid="97a7f5b9-4eba-48c7-b919-e495e4776750"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="349" width="25" height="20" forecolor="#000000" uuid="690bde52-14be-4a83-b50c-d3646e92812a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DZ_BOX}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="107" y="349" width="30" height="20" forecolor="#000000" uuid="d9cb067b-c7c9-4c35-a727-c09f10f6c010"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[DZ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="44" y="27" width="46" height="20" forecolor="#333333" uuid="7176dcd6-56ca-420c-a463-31e464ad5495"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OSGROUP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="107" y="27" width="34" height="20" forecolor="#333333" uuid="f926847e-cb5e-48f6-8fe6-514810dab28b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="168" y="27" width="46" height="20" forecolor="#333333" uuid="eed47e48-a72e-48e6-a8bd-242be3e26965"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL_BOX}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="62" width="259" height="20" forecolor="#000000" uuid="17a963e1-868a-4836-93d9-aee273fbbacf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="80" width="167" height="17" forecolor="#000000" uuid="4b8474d7-3273-4a52-b43e-d0ac983abf5e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDL1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="96" width="167" height="17" forecolor="#000000" uuid="3432a33e-da21-4021-8da3-68fec3e3074f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADDL2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="112" width="166" height="17" forecolor="#000000" uuid="a2a97f28-f808-477e-9a53-a7f9a3bb871f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Phone:"+$F{PHONE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="153" y="349" width="59" height="20" forecolor="#000000" uuid="4865430b-1118-44e6-9df4-dcb20f30caf0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNITS_BOX2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="246" width="67" height="18" forecolor="#000000" uuid="713cee44-a4d9-4cb0-9a4d-c47495327282"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="245" width="167" height="18" forecolor="#000000" uuid="7d0806cc-9b6e-4a98-903b-9baf6ad34e97"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="263" width="67" height="18" forecolor="#000000" uuid="43394fa3-7bde-48ad-a334-94a47dfa5984"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVOICE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="262" width="100" height="18" forecolor="#000000" uuid="15ac9eba-660d-4521-bd7f-cb60070f1b3c"/>
+				<textElement verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INVOICE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="82" y="304" width="153" height="21" uuid="76665c0d-3655-441d-acc0-c132ccfb6d4c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{V_STYLE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="299" width="68" height="30" forecolor="#000000" uuid="862bb440-2b00-4fc6-9b22-88972cfa6097"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUSTOMER STYLE:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

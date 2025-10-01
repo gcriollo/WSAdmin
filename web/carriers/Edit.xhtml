@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarriersEditDlg" widgetVar="CarriersEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCarriersTitle}">
+            <h:form id="CarriersEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{carriersController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{carriersController.selected.id}" title="#{bundle.EditCarriersTitle_id}" required="true" requiredMessage="#{bundle.EditCarriersRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{carriersController.selected.name}" title="#{bundle.EditCarriersTitle_name}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{carriersController.selected.address}" title="#{bundle.EditCarriersTitle_address}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{carriersController.selected.phone}" title="#{bundle.EditCarriersTitle_phone}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{carriersController.selected.email}" title="#{bundle.EditCarriersTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_web}" for="web" />
+                        <p:inputText id="web" value="#{carriersController.selected.web}" title="#{bundle.EditCarriersTitle_web}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_notes}" for="notes" />
+                        <p:inputText id="notes" value="#{carriersController.selected.notes}" title="#{bundle.EditCarriersTitle_notes}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{carriersController.selected.status}" title="#{bundle.EditCarriersTitle_status}" />
+                        <p:outputLabel value="#{bundle.EditCarriersLabel_sdate}" for="sdate" />
+                        <p:calendar id="sdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{carriersController.selected.sdate}" title="#{bundle.EditCarriersTitle_sdate}" required="true" requiredMessage="#{bundle.EditCarriersRequiredMessage_sdate}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{carriersController.update}" value="#{bundle.Save}" update="display,:CarriersListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CarriersEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CarriersEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle4.ListItemsDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle4.ListItemsDetEmpty}" rendered="#{itemsDetController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{itemsDetController.items.rowCount > 0}">
+                    <h:outputText value="#{itemsDetController.pagination.pageFirstItem + 1}..#{itemsDetController.pagination.pageLastItem + 1}/#{itemsDetController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{itemsDetController.previous}" value="#{bundle4.Previous} #{itemsDetController.pagination.pageSize}" rendered="#{itemsDetController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{itemsDetController.next}" value="#{bundle4.Next} #{itemsDetController.pagination.pageSize}" rendered="#{itemsDetController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{itemsDetController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_color}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.color}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_sdate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sdate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_itemFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.itemFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_ISize}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ISize}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_qtyUnits}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qtyUnits}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_pic}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pic}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_brand}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.brand}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_qtyOrig}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qtyOrig}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle4.ListItemsDetTitle_sdateQty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sdateQty}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{itemsDetController.prepareView}" value="#{bundle4.ListItemsDetViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{itemsDetController.prepareEdit}" value="#{bundle4.ListItemsDetEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{itemsDetController.destroy}" value="#{bundle4.ListItemsDetDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{itemsDetController.prepareCreate}" value="#{bundle4.ListItemsDetCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle4.ListItemsDetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle2.ViewPOrderDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle2.ViewPOrderDetLabel_id}"/>
+                    <h:outputText value="#{pOrderDetController.selected.id}" title="#{bundle2.ViewPOrderDetTitle_id}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderDetLabel_style}"/>
+                    <h:outputText value="#{pOrderDetController.selected.style}" title="#{bundle2.ViewPOrderDetTitle_style}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderDetLabel_pcs}"/>
+                    <h:outputText value="#{pOrderDetController.selected.pcs}" title="#{bundle2.ViewPOrderDetTitle_pcs}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderDetLabel_totalPcs}"/>
+                    <h:outputText value="#{pOrderDetController.selected.totalPcs}" title="#{bundle2.ViewPOrderDetTitle_totalPcs}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderDetLabel_dz}"/>
+                    <h:outputText value="#{pOrderDetController.selected.dz}" title="#{bundle2.ViewPOrderDetTitle_dz}"/>
+                    <h:outputText value="#{bundle2.ViewPOrderDetLabel_POrder}"/>
+                    <h:outputText value="#{pOrderDetController.selected.POrder}" title="#{bundle2.ViewPOrderDetTitle_POrder}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pOrderDetController.destroyAndView}" value="#{bundle2.ViewPOrderDetDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle2.ViewPOrderDetEditLink}"/>
+                <br />
+                <h:commandLink action="#{pOrderDetController.prepareCreate}" value="#{bundle2.ViewPOrderDetCreateLink}" />
+                <br />
+                <h:commandLink action="#{pOrderDetController.prepareList}" value="#{bundle2.ViewPOrderDetShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle2.ViewPOrderDetIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

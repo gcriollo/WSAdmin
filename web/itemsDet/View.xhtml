@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle4.ViewItemsDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_id}"/>
+                    <h:outputText value="#{itemsDetController.selected.id}" title="#{bundle4.ViewItemsDetTitle_id}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_color}"/>
+                    <h:outputText value="#{itemsDetController.selected.color}" title="#{bundle4.ViewItemsDetTitle_color}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_sdate}"/>
+                    <h:outputText value="#{itemsDetController.selected.sdate}" title="#{bundle4.ViewItemsDetTitle_sdate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_status}"/>
+                    <h:outputText value="#{itemsDetController.selected.status}" title="#{bundle4.ViewItemsDetTitle_status}"/>
+                    
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_itemFk}"/>
+                    <h:outputText value="#{itemsDetController.selected.itemFk}" title="#{bundle4.ViewItemsDetTitle_itemFk}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_ISize}"/>
+                    <h:outputText value="#{itemsDetController.selected.ISize}" title="#{bundle4.ViewItemsDetTitle_ISize}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_qtyUnits}"/>
+                    <h:outputText value="#{itemsDetController.selected.qtyUnits}" title="#{bundle4.ViewItemsDetTitle_qtyUnits}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_pic}"/>
+                    <h:outputText value="#{itemsDetController.selected.pic}" title="#{bundle4.ViewItemsDetTitle_pic}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_brand}"/>
+                    <h:outputText value="#{itemsDetController.selected.brand}" title="#{bundle4.ViewItemsDetTitle_brand}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_qtyOrig}"/>
+                    <h:outputText value="#{itemsDetController.selected.qtyOrig}" title="#{bundle4.ViewItemsDetTitle_qtyOrig}"/>
+                    <h:outputText value="#{bundle4.ViewItemsDetLabel_sdateQty}"/>
+                    <h:outputText value="#{itemsDetController.selected.sdateQty}" title="#{bundle4.ViewItemsDetTitle_sdateQty}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemsDetController.destroyAndView}" value="#{bundle4.ViewItemsDetDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle4.ViewItemsDetEditLink}"/>
+                <br />
+                <h:commandLink action="#{itemsDetController.prepareCreate}" value="#{bundle4.ViewItemsDetCreateLink}" />
+                <br />
+                <h:commandLink action="#{itemsDetController.prepareList}" value="#{bundle4.ViewItemsDetShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle4.ViewItemsDetIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
