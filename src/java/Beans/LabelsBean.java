@@ -332,10 +332,10 @@ public class LabelsBean implements Serializable {
                 }
             }           
             
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Set of Labels Created!"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PMakelabelsCreated"));
             return "";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("An error occurred saving in DB, check DB conexion or report Issue to IT!"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -374,10 +374,10 @@ public class LabelsBean implements Serializable {
                 }
             }           
             
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("The Labels were Updated!"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("PMakelabelsUpdated"));
             return "";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("An error occurred saving in DB, check DB conexion or report Issue to IT!"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }

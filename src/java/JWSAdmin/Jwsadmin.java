@@ -194,7 +194,7 @@ public class Jwsadmin implements Serializable{
     }
 
     /**
-     * @param url_pic_web_abs the url_pic_web_abs to set
+     * @param url_pic_web_abs of the item to set up 
      */
     public void setUrl_pic_web_abs(String url_pic_web_abs) {
         this.url_pic_web_abs = url_pic_web_abs;
